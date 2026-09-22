@@ -1,0 +1,29 @@
+PANDUAN AUTO UPDATE BERITA RIAU - JAM 06.00
+
+1. Letakkan collector_berita_riau.py, jalankan_collector_riau.bat,
+   dan buat_task_berita_riau.ps1 dalam satu folder.
+
+2. Buka collector_berita_riau.py.
+   Cari APPS_SCRIPT_URL dan isi dengan URL Web App Apps Script yang berakhiran /exec.
+
+3. Tes:
+   Klik dua kali jalankan_collector_riau.bat.
+   Pastikan muncul BERHASIL dan data baru masuk Google Sheet.
+
+4. Setelah berhasil, buka PowerShell sebagai user Anda.
+   Masuk ke folder, lalu:
+   powershell -ExecutionPolicy Bypass -File .\buat_task_berita_riau.ps1
+
+5. Task Scheduler akan menjalankan collector setiap hari pukul 06.00.
+
+6. Tes scheduler:
+   Start-ScheduledTask -TaskName "Auto Update Berita Riau"
+
+7. Cek:
+   Get-ScheduledTask -TaskName "Auto Update Berita Riau"
+
+Catatan:
+- PC harus menyala/bangun agar proses berjalan.
+- StartWhenAvailable membantu menjalankan task ketika PC tersedia kembali.
+- Streamlit tidak perlu hidup untuk update database.
+- Duplikat dicek berdasarkan Link dan Judul.
