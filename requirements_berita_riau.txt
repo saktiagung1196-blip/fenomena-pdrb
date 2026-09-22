@@ -4,4 +4,3 @@ requests
 feedparser
 beautifulsoup4
 lxml
-openpyxl
